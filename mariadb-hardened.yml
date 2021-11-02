@@ -1,0 +1,14 @@
+---
+- name: Maraiadb Hardened image
+  hosts: all
+  become: true
+  vars:
+    ssh_use_pam: true   # to allow access with our key on ec2
+    mysql_packages:
+      - mariadb-client
+      - mariadb-server
+      - python-mysqldb  
+  roles:
+    - geerlingguy.mysql
+    - dev-sec.mysql-hardening
+
